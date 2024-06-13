@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Customer } from '../models/Customer';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,13 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createCutomer(customer: any): Observable<any> {
+  createCustomer(customer: Customer): Observable<Customer> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.httpClient.post(`${this.URL}`, customer, { headers });
+    return this.httpClient.post<Customer>(this.URL, customer, { headers });
   }
 
-  getCustomer():Observable<any>{
-    return this.httpClient.get(this.URL);
+  getCustomer(): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(this.URL);
   }
 
 }

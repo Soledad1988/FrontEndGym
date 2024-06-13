@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
+import { CustomerService } from './service/customer.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

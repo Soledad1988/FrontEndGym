@@ -10,36 +10,36 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CoustumerComponent implements OnInit{
 
-  customer: Customer[] = [];
+  customer: Customer = new Customer();
+  customers: Customer[] = [];
 
-  constructor(private costomerService: CustomerService,
+  constructor(private customerService: CustomerService,
     private router:Router, 
     private activatedRoute:ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.getCustomer();
+    this.getCustomers();
   }
 
-  createCutomer(){
-    this.costomerService.createCutomer(this.costomerService).subscribe(
-      res=>{
+  createCustomer() {
+    this.customerService.createCustomer(this.customer).subscribe(
+      res => {
         console.log(res);
-        this.router.navigate(['/menu']);
+        //this.router.navigate(['/menu']);
       },
-      err=>console.log(err)
+      err => console.log(err)
     );
   }
 
-
-getCustomer(): void{
-    this.costomerService.getCustomer().subscribe(
-      res=>{
-        this.getCustomer=res;
-        console.log(res);
+  getCustomers(): void {
+    this.customerService.getCustomer().subscribe(
+      (data: Customer[]) => {
+        this.customers = data;
       },
-      err=>console.log(err)
+      (error) => {
+        console.error('Error al obtener los clientes:', error);
+      }
     );
-
   }
 }

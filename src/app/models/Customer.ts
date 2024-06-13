@@ -1,8 +1,11 @@
-export class Customer{
-    idCustomer?:number;
-    name?:String;
-    lastName?:String;
-    dni?:String;
-    telefonNumber?:String;
-    address?:String;
+import { Fee } from "./Fee";
+
+export class Customer {
+    idCustomer?: number;
+    name?: string;
+    lastName?: string;
+    dni?: string;
+    telefonNumber?: string;
+    address?: string;
+    fees?: Fee[];
 }
