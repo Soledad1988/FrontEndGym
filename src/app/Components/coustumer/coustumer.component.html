@@ -1,115 +1,84 @@
-<p>coustumer works!</p>
 
-<!--
-<div>
-  
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Last Name</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Hunter</mat-hint>
-        </mat-form-field>
+<h2 class="title">Add Customer</h2>
+<div class="container">
+   
+    <section class="form-section">
+      <form (ngSubmit)="createCustomer()">
+        <p>
+          <mat-form-field appearance="fill">
+            <mat-label>Neme</mat-label>
+            <input matInput placeholder="Name" [(ngModel)]="customer.name" name="name" required>
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
       </p>
+
+      <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" [(ngModel)]="customer.lastName" name="lastName" required>
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+      </p>
+
       <p>
         <mat-form-field appearance="outline">
           <mat-label>DNI</mat-label>
-          <input matInput placeholder="Placeholder">
+          <input matInput placeholder="DNI" [(ngModel)]="customer.dni" name="dni" required>
           <mat-icon matSuffix>perm_identity</mat-icon>
-          <mat-hint>22333444</mat-hint>
         </mat-form-field>
       </p>
+
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Telefon Number</mat-label>
-          <input matInput placeholder="Placeholder">
+          <input matInput placeholder="Telefon Number" [(ngModel)]="customer.telefonNumber" name="telefonNumber" required>
           <mat-icon matSuffix>phone</mat-icon>
-          <mat-hint>011 - 333444555</mat-hint>
         </mat-form-field>
       </p>
+
       <p>
         <mat-form-field appearance="outline">
           <mat-label>Address</mat-label>
-          <input matInput placeholder="Placeholder">
+          <input matInput placeholder="Address" [(ngModel)]="customer.address" name="address">
           <mat-icon matSuffix>location_on</mat-icon>
-          <mat-hint>Av. Florida 200</mat-hint>
         </mat-form-field>
       </p>
-      <div class="example-button-row">
-        <button mat-raised-button (click)="createCustomer()">Add</button>
-      </div>
-</div>
--->
-
-<div>
-  <form (ngSubmit)="createCustomer()">
-    <p>
-      <mat-form-field appearance="fill">
-        <mat-label>Neme</mat-label>
-        <input matInput placeholder="Name" [(ngModel)]="customer.name" name="name" required>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
-   </p>
-
-   <p>
-      <mat-form-field appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="Last Name" [(ngModel)]="customer.lastName" name="lastName" required>
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
-  </p>
-
-  <p>
-    <mat-form-field appearance="outline">
-      <mat-label>DNI</mat-label>
-      <input matInput placeholder="DNI" [(ngModel)]="customer.dni" name="dni" required>
-      <mat-icon matSuffix>perm_identity</mat-icon>
-    </mat-form-field>
-  </p>
-
-  <p>
-    <mat-form-field appearance="outline">
-      <mat-label>Telefon Number</mat-label>
-      <input matInput placeholder="Telefon Number" [(ngModel)]="customer.telefonNumber" name="telefonNumber" required>
-      <mat-icon matSuffix>phone</mat-icon>
-    </mat-form-field>
-  </p>
-
-  <p>
-    <mat-form-field appearance="outline">
-      <mat-label>Address</mat-label>
-      <input matInput placeholder="Address" [(ngModel)]="customer.address" name="address">
-      <mat-icon matSuffix>location_on</mat-icon>
-    </mat-form-field>
-  </p>
-  
-    <div class="example-button-row">
-      <button mat-raised-button type="submit">Add</button>
-    </div>
-  </form>
-  
-</div>
-
-<div>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Last Name</th>
-        <th>DNI</th>
-        <th>Feriado</th>
-        <th>Address</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let customer of customers">
-        <td>{{ customer.name }}</td>
-        <td>{{ customer.lastName }}</td>
-        <td>{{ customer.dni }}</td>
-        <td>{{ customer.telefonNumber }}</td>
-        <td>{{ customer.address }}</td>
-      </tr>
-    </tbody>
-  </table>
       
+        <div class="example-button-row">
+          <button mat-raised-button type="submit">Add</button>
+        </div>
+      </form>
+      
+    </section>
+
+    <section class="table-section">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>DNI</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.lastName }}</td>
+            <td>{{ customer.dni }}</td>
+            <td>{{ customer.telefonNumber }}</td>
+            <td>{{ customer.address }}</td>
+            <td>
+              <button mat-mini-fab color="#959888" matTooltip="Edit" >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+          
+    </section>
+
 </div>
