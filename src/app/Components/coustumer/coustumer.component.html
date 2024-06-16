@@ -30,7 +30,7 @@
 
       <p>
         <mat-form-field appearance="outline">
-          <mat-label>Telefon Number</mat-label>
+          <mat-label>Phone Number</mat-label>
           <input matInput placeholder="Telefon Number" [(ngModel)]="customer.telefonNumber" name="telefonNumber" required>
           <mat-icon matSuffix>phone</mat-icon>
         </mat-form-field>
@@ -44,7 +44,7 @@
         </mat-form-field>
       </p>
       
-        <div class="example-button-row">
+        <div class="button full-width">
           <button mat-raised-button type="submit">Add</button>
         </div>
       </form>
@@ -65,20 +65,39 @@
         </thead>
         <tbody>
           <tr *ngFor="let customer of customers">
-            <td>{{ customer.name }}</td>
-            <td>{{ customer.lastName }}</td>
-            <td>{{ customer.dni }}</td>
-            <td>{{ customer.telefonNumber }}</td>
-            <td>{{ customer.address }}</td>
-            <td>
-              <button mat-mini-fab color="#959888" matTooltip="Edit" >
-                <mat-icon>edit</mat-icon>
-              </button>
-            </td>
+            <ng-container *ngIf="editCustomerId === customer.idCustomer; else readOnlyMode">
+              <td><input [(ngModel)]="customer.name"></td>
+              <td><input [(ngModel)]="customer.lastName"></td>
+              <td><input [(ngModel)]="customer.dni"></td>
+              <td><input [(ngModel)]="customer.telefonNumber"></td>
+              <td><input [(ngModel)]="customer.address"></td>
+              <td>
+                <button mat-mini-fab color="primary" matTooltip="Save" (click)="saveCustomer(customer)">
+                  <mat-icon>save</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn" matTooltip="Cancel" (click)="cancelEdit()">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <ng-template #readOnlyMode>
+              <td>{{ customer.name }}</td>
+              <td>{{ customer.lastName }}</td>
+              <td>{{ customer.dni }}</td>
+              <td>{{ customer.telefonNumber }}</td>
+              <td>{{ customer.address }}</td>
+              <td>
+                <button mat-icon-button matTooltip="Edit" (click)="editCustomer(customer.idCustomer!)" color="accent">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Delete" (click)="deleteCustomer(customer.idCustomer!)" color="warn">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-template>
           </tr>
         </tbody>
       </table>
-          
     </section>
 
 </div>

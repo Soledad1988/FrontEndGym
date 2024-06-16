@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { Customer } from '../models/Customer';
 
 @Injectable({
@@ -19,6 +19,14 @@ export class CustomerService {
 
   getCustomer(): Observable<Customer[]> {
     return this.httpClient.get<Customer[]>(this.URL);
+  }
+
+  update(idCustomer:number, customer: Customer):Observable<Customer>{
+    return this.httpClient.put<Customer>(this.URL+'/'+idCustomer, customer);
+  }
+
+  deleteCustomer(idCustomer: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.URL}/${idCustomer}`);
   }
 
 }

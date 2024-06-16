@@ -16,12 +16,30 @@
 .form-section {
     flex: 1;
     margin-right: 20px;
-    background-color: #3498DB;
+    background-color: #d1d7db;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; /* Centrar horizontalmente si es necesario */
     padding: 10px;
+    border-radius: 25px;
+}
+
+.full-width {
+    width: 100%;
+    height: 6%;
+  
+}
+  
+.button {
+    display: flex;
+    justify-content: center;
+}
+  
+.button button {
+    width: 100%;
+    border-radius: 8px;
+    background-color: #d1d7db;
 }
 
 .table-section {
