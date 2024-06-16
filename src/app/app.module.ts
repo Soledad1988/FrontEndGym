@@ -13,6 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { CustomerService } from './service/customer.service';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CustomerService } from './service/customer.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule, // Agrega BrowserAnimationsModule aquí
+    ToastrModule.forRoot(),
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
