@@ -59,5 +59,87 @@ th, td {
 
 th {
     background-color: #f2f2f2;
-    text-align: left;
+    text-align: center;
+    font-weight: bold;
 }
+
+.navegacion2 {
+    display: flex; /* Utiliza flexbox para los botones de navegación */
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 10px; /* Espacio entre los botones */
+  }
+  
+  button[mat-mini-fab], button[mat-icon-button] {
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    box-shadow: none; /* Sin sombra */
+    transition: transform 0.3s; /* Transición suave para el efecto hover */
+  }
+  
+  button[mat-mini-fab]:hover, button[mat-icon-button]:hover {
+    transform: scale(1.2); /* Aumento del tamaño al pasar el ratón */
+  }
+  
+  button[mat-mini-fab]:active, button[mat-icon-button]:active {
+    transform: scale(1.1); /* Reducción ligera al hacer clic */
+  }
+
+  cdk-virtual-scroll-viewport {
+    height: 200px;
+    overflow: auto; /* Asegura que el contenido se pueda desplazar */
+  }
+
+  /* Estilizar la barra de desplazamiento */
+cdk-virtual-scroll-viewport::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento vertical */
+    height: 8px; /* Altura de la barra de desplazamiento horizontal */
+  }
+  
+  cdk-virtual-scroll-viewport::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo del track (canal) */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
+    background: #888; /* Color de la manija (thumb) */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color de la manija (thumb) al pasar el ratón */
+  }
+
+  .search-container {
+    display: flex;
+    gap: 16px;
+    margin: 16px;
+  }
+  
+  .search-field {
+    flex: 1;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .mat-form-field-fill .mat-form-field-wrapper {
+    background-color: #e0f7fa;
+    border-radius: 8px;
+    border: 1px solid #0097a7;
+    transition: all 0.3s ease;
+  }
+  
+  .mat-form-field-fill .mat-form-field-wrapper:hover {
+    background-color: #b2ebf2;
+    border-color: #006064;
+  }
+  
+  .mat-form-field-fill .mat-form-field-label {
+    color: #004d40;
+  }
+  
+  .mat-form-field-fill .mat-icon {
+    color: #004d40;
+  }
+  

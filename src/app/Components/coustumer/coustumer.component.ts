@@ -13,6 +13,8 @@ export class CoustumerComponent implements OnInit{
 
   customer: Customer = new Customer();
   customers: Customer[] = [];
+  searchName: string = '';
+  searchLastName: string = '';
 
   editCustomerId: number | null = null;
 
@@ -24,6 +26,7 @@ export class CoustumerComponent implements OnInit{
 
   ngOnInit(): void {
     this.getCustomers();
+    this.loadCustomers();
   }
 
   createCustomer() {
@@ -84,5 +87,17 @@ export class CoustumerComponent implements OnInit{
         console.error('Error al eliminar el cliente:', error);
       }
     );
+  }
+
+  loadCustomers(): void {
+    this.customerService.getCustomer().subscribe(data => {
+      this.customers = data;
+    });
+  }
+
+  onSearch(): void {
+    this.customerService.searchCustomers(this.searchName, this.searchLastName).subscribe(data => {
+      this.customers = data;
+    });
   }
 }

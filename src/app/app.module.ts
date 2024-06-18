@@ -14,6 +14,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import { CustomerService } from './service/customer.service';
 import { ToastrModule } from 'ngx-toastr';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatFormFieldModule, // Agrega tu módulo de Angular Material aquí
     MatIconModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    ScrollingModule
   ],
   providers: [CustomerService],
   bootstrap: [AppComponent]

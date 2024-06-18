@@ -52,6 +52,22 @@
     </section>
 
     <section class="table-section">
+      <div class="search-container">
+
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="searchName" (input)="onSearch()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="searchLastName" (input)="onSearch()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+       
+      </div>
+      <cdk-virtual-scroll-viewport  itemSize="20">
       <table>
         <thead>
           <tr>
@@ -64,7 +80,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let customer of customers">
+          <tr *cdkVirtualFor="let customer of customers">
             <ng-container *ngIf="editCustomerId === customer.idCustomer; else readOnlyMode">
               <td><input [(ngModel)]="customer.name"></td>
               <td><input [(ngModel)]="customer.lastName"></td>
@@ -87,17 +103,30 @@
               <td>{{ customer.telefonNumber }}</td>
               <td>{{ customer.address }}</td>
               <td>
-                <button mat-icon-button matTooltip="Edit" (click)="editCustomer(customer.idCustomer!)" color="accent">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button matTooltip="Delete" (click)="deleteCustomer(customer.idCustomer!)" color="warn">
-                  <mat-icon>delete</mat-icon>
-                </button>
+                <div class="navegacion2">
+                  <button mat-mini-fab matTooltip="Edit" (click)="editCustomer(customer.idCustomer!)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+
+                  <button mat-icon-button matTooltip="Pago">
+                    <mat-icon>attach_money</mat-icon>
+                  </button>
+                  
+                  <button mat-icon-button matTooltip="Delete" (click)="deleteCustomer(customer.idCustomer!)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+
+                  
+                </div>
+
+
+                
               </td>
             </ng-template>
           </tr>
         </tbody>
       </table>
+    </cdk-virtual-scroll-viewport>
     </section>
 
 </div>
