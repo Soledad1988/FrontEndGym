@@ -1,78 +1,80 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../models/Customer';
 import { CustomerService } from '../../service/customer.service';
 import { PayService } from '../../service/pay.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pay',
   templateUrl: './pay.component.html',
   styleUrl: './pay.component.css'
 })
-export class PayComponent {
-  selected: Date | null = null;
-
-  showFeeForm = false;
+export class PayComponent implements OnInit{
   selectedDate: Date | null = null;
+  actualCustomer: Customer  = {
+    name:'',
+    lastName:''
+  };
+
   feeAmount: number | null = null;
-  selectedCustomerId: number | null = null;
-  selectedCustomer: Customer | null = null;
-  customers: Customer[] = [];
+  showFeeForm = false;
 
-  constructor(private route: ActivatedRoute, 
-    private customerService: CustomerService,
-    private feeService: PayService
-  ) { }
+  constructor(private customerService: CustomerService,
+    private activatedRoute: ActivatedRoute,
+    private payService: PayService,
+    private router: Router,
+    private toastr: ToastrService,  
+  ) {}
 
-  ngOnInit() {
-    const customerId = this.route.snapshot.paramMap.get('idCustomer');
-    if (customerId) {
-      this.customerService.getCustomerById(+customerId).subscribe(customer => {
-        this.selectedCustomer = customer;
-      });
-    }
+  ngOnInit(): void {
+   this.getCustomers();
   }
 
-
-  loadCustomers() {
-    this.customerService.getCustomer().subscribe(customers => {
-      this.customers = customers;
+  getCustomers(): void {
+    this.activatedRoute.params.subscribe(params => {
+      const idCustomer = params['id'];
+      if (idCustomer) {
+        this.customerService.getCustomerById(idCustomer).subscribe(
+          res => {
+            this.actualCustomer = res;
+          
+          },
+          error => {
+            console.error('Error al obtener el colaborador:', error);
+          }
+        );
+      }
     });
   }
 
-  assignFeeToCustomer() {
-    // Verificar que se haya seleccionado un cliente, una fecha y un importe
-    if (this.selectedCustomerId && this.selectedDate && this.feeAmount) {
-      // Crear objeto con los datos de la cuota
+  assignFee(): void {
+    if (this.feeAmount !== null && this.selectedDate !== null) {
       const feeData = {
-        datePayment: this.selectedDate.toISOString(),  // Convertir la fecha a formato ISO
-        fee: this.feeAmount
+        fee: this.feeAmount,
+        datePayment: this.selectedDate
       };
-
-      // Llamar al servicio para asignar la cuota al cliente seleccionado
-      this.feeService.assignFeeToCustomer(this.selectedCustomerId, feeData).subscribe(
-        (response) => {
-          console.log('Cuota asignada exitosamente:', response);
-          // Limpiar campos después de asignar la cuota
-          this.selectedDate = null;
-          this.feeAmount = null;
-          // Recargar la lista de clientes después de asignar la cuota
-          this.loadCustomers();
+  
+      console.log('Sending fee data:', feeData);
+  
+      this.payService.assignFeeToCustomer(this.actualCustomer.idCustomer!, feeData).subscribe(
+        response => {
+          console.log('Cuota asignada exitosamente', response);
+          this.toastr.success('Cuota asignada exitosamente', 'Éxito');
+          this.router.navigate(['/customer']);
         },
-        (error) => {
+        error => {
           console.error('Error al asignar la cuota:', error);
-          // Manejar el error según sea necesario
         }
       );
     } else {
-      console.error('Debe seleccionar un cliente, una fecha y un importe.');
-      // Manejar caso donde faltan datos requeridos
+      console.error('Fecha o importe no válidos');
     }
   }
 
-  cancelAssignFee() {
-    this.showFeeForm = false;
-    this.feeAmount = null;
-    this.selectedDate = new Date();
+  cancel(): void {
+    this.toastr.info('Operación cancelada', 'Atención');
+    this.router.navigate(['/customer']); // Redireccionar a la ruta de clientes
   }
+
 }
