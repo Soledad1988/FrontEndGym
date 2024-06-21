@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from '../../models/Customer';
 import { CustomerService } from '../../service/customer.service';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -18,14 +17,13 @@ export class CoustumerComponent implements OnInit{
 
   editCustomerId: number | null = null;
 
-  constructor(private customerService: CustomerService,
-    private router:Router, 
-    private activatedRoute:ActivatedRoute,
-    private toastr: ToastrService
+  constructor(
+    private customerService: CustomerService,
+    private toastr: ToastrService, 
   ) {}
 
   ngOnInit(): void {
-    this.getCustomers();
+    //this.getCustomers();
     this.loadCustomers();
   }
 
@@ -34,10 +32,12 @@ export class CoustumerComponent implements OnInit{
       res => {
         console.log(res);
         this.toastr.success('El cliente se ha creado correctamente', 'Éxito');
+        this.getCustomers();
       },
       (err) => {
         console.error('Error al crear cliente:', err);
         this.toastr.error('Error al crear el cliente', 'Error');
+     
       }
     );
   }
@@ -62,6 +62,7 @@ export class CoustumerComponent implements OnInit{
       this.customerService.update(customer.idCustomer, customer).subscribe(
         res => {
           console.log('Cliente actualizado correctamente:', res);
+          this.toastr.success('Cliente actualizado correctamente:', 'Éxito');
           this.editCustomerId = null;
           this.getCustomers(); // Actualiza la lista de clientes después de guardar los cambios
         },
@@ -82,6 +83,7 @@ export class CoustumerComponent implements OnInit{
       res => {
         console.log('Cliente eliminado correctamente:', res);
         this.getCustomers(); // Actualiza la lista de clientes después de eliminar uno
+        this.toastr.success('El cliente se ha eliminado correctamente', 'Cuidado');
       },
       error => {
         console.error('Error al eliminar el cliente:', error);
@@ -100,4 +102,6 @@ export class CoustumerComponent implements OnInit{
       this.customers = data;
     });
   }
+
+
 }

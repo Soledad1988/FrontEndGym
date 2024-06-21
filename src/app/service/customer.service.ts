@@ -21,6 +21,11 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(this.URL);
   }
 
+  getCustomerById(idCustomer: number): Observable<Customer> {
+    return this.httpClient.get<Customer>(`${this.URL}/${idCustomer}`);
+  }
+
+
   update(idCustomer:number, customer: Customer):Observable<Customer>{
     return this.httpClient.put<Customer>(this.URL+'/'+idCustomer, customer);
   }
@@ -39,5 +44,6 @@ export class CustomerService {
     }
     return this.httpClient.get<Customer[]>(`${this.URL}/search`, { params });
   }
+
 
 }

@@ -5,6 +5,16 @@
     <section class="form-section">
       <form (ngSubmit)="createCustomer()">
         <p>
+          <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="customer.dateStart" name="dateStart">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </p>
+
+        <p>
           <mat-form-field appearance="fill">
             <mat-label>Neme</mat-label>
             <input matInput placeholder="Name" [(ngModel)]="customer.name" name="name" required>
@@ -108,7 +118,7 @@
                     <mat-icon>edit</mat-icon>
                   </button>
 
-                  <button mat-icon-button matTooltip="Pago">
+                  <button mat-icon-button matTooltip="Ver detalles" [routerLink]="['/pay', customer.idCustomer]">
                     <mat-icon>attach_money</mat-icon>
                   </button>
                   
