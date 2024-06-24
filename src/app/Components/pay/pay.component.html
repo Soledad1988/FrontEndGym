@@ -1,0 +1,28 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <form (ngSubmit)="assignFee()">
+        <mat-card class="demo-inline-calendar-card">
+          <mat-calendar [(selected)]="selectedDate"></mat-calendar>
+        </mat-card>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" name="nombre" [value]="actualCustomer.name">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Apellido</mat-label>
+          <input matInput placeholder="Apellido" name="apellido" [value]="actualCustomer.lastName">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Importe</mat-label>
+          <input matInput type="number" placeholder="Importe" name="importe" [(ngModel)]="feeAmount">
+        </mat-form-field>
+        <div class="button-container">
+          <button mat-raised-button type="submit" class="custom-button">Asignar Cuota</button>
+          <button mat-raised-button color="warn" class="custom-button cancel-button" (click)="cancel()">Cancelar</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

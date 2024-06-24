@@ -1,0 +1,61 @@
+.demo-inline-calendar-card {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 16px auto; /* Añadir margen inferior para separar el calendario de los inputs */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+  
+  mat-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 400px;
+    border-radius: 10px;
+    background: #e0b9b0;
+  }
+  
+  mat-card-content form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-form-field {
+    margin-bottom: 10px;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.custom-button {
+    background-color: #e0b9b0 !important; /* Color personalizado */
+    font-size: 16px; /* Tamaño de fuente */
+    color: white !important; /* Color de texto */
+    width: 150px; /* Ancho del botón */
+    height: 40px; /* Alto del botón */
+    border-radius: 10px;
+    border: none;
+    transition: background-color 0.3s, transform 0.3s; /* Transición suave */
+}
+
+.custom-button:hover {
+  background-color: #d9988a !important; /* Color de fondo al hacer hover */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.cancel-button {
+    background-color: #d9534f !important; /* Color personalizado para el botón de cancelar */
+}
+
+.cancel-button:hover {
+  background-color: #c9302c !important; /* Color de fondo al hacer hover */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}

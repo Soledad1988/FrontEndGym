@@ -1,11 +1,20 @@
 
-<h2 class="title">Add Customer</h2>
 <div class="container">
    
     <section class="form-section">
       <form (ngSubmit)="createCustomer()">
         <p>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="outline">
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="customer.dateStart" name="dateStart">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </p>
+
+        <p>
+          <mat-form-field appearance="outline">
             <mat-label>Neme</mat-label>
             <input matInput placeholder="Name" [(ngModel)]="customer.name" name="name" required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
@@ -52,6 +61,22 @@
     </section>
 
     <section class="table-section">
+      <div class="search-container">
+
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput [(ngModel)]="searchName" (input)="onSearch()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="searchLastName" (input)="onSearch()">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+       
+      </div>
+      <cdk-virtual-scroll-viewport  itemSize="20">
       <table>
         <thead>
           <tr>
@@ -64,13 +89,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let customer of customers">
+          <tr *cdkVirtualFor="let customer of customers">
             <ng-container *ngIf="editCustomerId === customer.idCustomer; else readOnlyMode">
-              <td><input [(ngModel)]="customer.name"></td>
-              <td><input [(ngModel)]="customer.lastName"></td>
-              <td><input [(ngModel)]="customer.dni"></td>
-              <td><input [(ngModel)]="customer.telefonNumber"></td>
-              <td><input [(ngModel)]="customer.address"></td>
+              <td><input class="input-update" [(ngModel)]="customer.name"></td>
+              <td><input class="input-update" [(ngModel)]="customer.lastName"></td>
+              <td><input class="input-update" [(ngModel)]="customer.dni"></td>
+              <td><input class="input-update" [(ngModel)]="customer.telefonNumber"></td>
+              <td><input class="input-update" [(ngModel)]="customer.address"></td>
               <td>
                 <button mat-mini-fab color="primary" matTooltip="Save" (click)="saveCustomer(customer)">
                   <mat-icon>save</mat-icon>
@@ -87,17 +112,30 @@
               <td>{{ customer.telefonNumber }}</td>
               <td>{{ customer.address }}</td>
               <td>
-                <button mat-icon-button matTooltip="Edit" (click)="editCustomer(customer.idCustomer!)" color="accent">
-                  <mat-icon>edit</mat-icon>
-                </button>
-                <button mat-icon-button matTooltip="Delete" (click)="deleteCustomer(customer.idCustomer!)" color="warn">
-                  <mat-icon>delete</mat-icon>
-                </button>
+                <div class="navegacion2">
+                  <button mat-mini-fab matTooltip="Edit" (click)="editCustomer(customer.idCustomer!)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+
+                  <button mat-icon-button matTooltip="Ver detalles" [routerLink]="['/pay', customer.idCustomer]">
+                    <mat-icon>attach_money</mat-icon>
+                  </button>
+                  
+                  <button mat-icon-button matTooltip="Delete" (click)="deleteCustomer(customer.idCustomer!)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+
+                  
+                </div>
+
+
+                
               </td>
             </ng-template>
           </tr>
         </tbody>
       </table>
+    </cdk-virtual-scroll-viewport>
     </section>
 
 </div>
