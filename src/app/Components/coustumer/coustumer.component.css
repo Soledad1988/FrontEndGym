@@ -2,8 +2,6 @@
 .container { 
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    padding: 10px;
 }
 
 .title {
@@ -14,15 +12,13 @@
   }
 
 .form-section {
-    flex: 1;
-    margin-right: 20px;
-    background-color: #d1d7db;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Centrar horizontalmente si es necesario */
-    padding: 10px;
-    border-radius: 25px;
+  width: 20%;
+  background: #c1938b;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: center;
+  flex-direction: column;
+   
 }
 
 .full-width {
@@ -39,12 +35,13 @@
 .button button {
     width: 100%;
     border-radius: 8px;
-    background-color: #d1d7db;
+    background-color: #834841;
 }
 
 .table-section {
     flex: 2;
     margin-left: 30px;
+    border: none;
 }
 
 table {
@@ -58,9 +55,17 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #834841;
     text-align: center;
+    color: #ddd;
     font-weight: bold;
+}
+
+.input-update{
+  border-radius: 8px;
+  border: none;
+  height: 20px;
+  width: 100%;
 }
 
 .navegacion2 {
@@ -124,22 +129,22 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar {
   }
   
   .mat-form-field-fill .mat-form-field-wrapper {
-    background-color: #e0f7fa;
+    background-color: #ffdfd5;;
     border-radius: 8px;
-    border: 1px solid #0097a7;
+    border: 1px solid #ffdfd5;
     transition: all 0.3s ease;
   }
   
   .mat-form-field-fill .mat-form-field-wrapper:hover {
     background-color: #b2ebf2;
-    border-color: #006064;
+    border-color: #ffdfd5;
   }
   
   .mat-form-field-fill .mat-form-field-label {
-    color: #004d40;
+    color: #ffdfd5;
   }
   
   .mat-form-field-fill .mat-icon {
-    color: #004d40;
+    color: #ffdfd5;
   }
   

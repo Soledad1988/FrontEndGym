@@ -1,11 +1,10 @@
 
-<h2 class="title">Add Customer</h2>
 <div class="container">
    
     <section class="form-section">
       <form (ngSubmit)="createCustomer()">
         <p>
-          <mat-form-field>
+          <mat-form-field appearance="outline">
               <mat-label>Choose a date</mat-label>
               <input matInput [matDatepicker]="picker" [(ngModel)]="customer.dateStart" name="dateStart">
               <mat-hint>MM/DD/YYYY</mat-hint>
@@ -15,7 +14,7 @@
       </p>
 
         <p>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="outline">
             <mat-label>Neme</mat-label>
             <input matInput placeholder="Name" [(ngModel)]="customer.name" name="name" required>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
@@ -92,11 +91,11 @@
         <tbody>
           <tr *cdkVirtualFor="let customer of customers">
             <ng-container *ngIf="editCustomerId === customer.idCustomer; else readOnlyMode">
-              <td><input [(ngModel)]="customer.name"></td>
-              <td><input [(ngModel)]="customer.lastName"></td>
-              <td><input [(ngModel)]="customer.dni"></td>
-              <td><input [(ngModel)]="customer.telefonNumber"></td>
-              <td><input [(ngModel)]="customer.address"></td>
+              <td><input class="input-update" [(ngModel)]="customer.name"></td>
+              <td><input class="input-update" [(ngModel)]="customer.lastName"></td>
+              <td><input class="input-update" [(ngModel)]="customer.dni"></td>
+              <td><input class="input-update" [(ngModel)]="customer.telefonNumber"></td>
+              <td><input class="input-update" [(ngModel)]="customer.address"></td>
               <td>
                 <button mat-mini-fab color="primary" matTooltip="Save" (click)="saveCustomer(customer)">
                   <mat-icon>save</mat-icon>
