@@ -3,13 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { CoustumerComponent } from './Components/coustumer/coustumer.component';
 import { AppComponent } from './app.component';
 import { PayComponent } from './Components/pay/pay.component';
+import { HomeComponent } from './Components/home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/customer', pathMatch: 'full' },
-  //{ path: 'customer', component: AppComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'customer', component: CoustumerComponent },
   { path: 'pay/:id', component: PayComponent },
-  // Agrega otras rutas según tus necesidades
 ];
 
 @NgModule({

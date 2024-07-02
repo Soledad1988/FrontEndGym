@@ -18,16 +18,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PayComponent } from './Components/pay/pay.component';
+import {MatButtonModule} from '@angular/material/button';
 
 //animacion
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './Components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoustumerComponent,
-    PayComponent
+    PayComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { ToastrModule } from 'ngx-toastr';
     ScrollingModule,
     MatCardModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatButtonModule,
   
   ],
   providers: [CustomerService],
