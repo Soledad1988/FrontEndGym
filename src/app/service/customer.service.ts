@@ -45,5 +45,9 @@ export class CustomerService {
     return this.httpClient.get<Customer[]>(`${this.URL}/search`, { params });
   }
 
+  // Nuevo método para obtener clientes con sus cuotas
+  getCustomersWithFees(): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${this.URL}/details`);
+  }
 
 }
