@@ -74,6 +74,10 @@
           <input matInput [(ngModel)]="searchLastName" (input)="onSearch()">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
+
+        <div class="button">
+          <button mat-raised-button type="submit" [routerLink]="['/details']">Payment Details</button>
+        </div>
        
       </div>
       <cdk-virtual-scroll-viewport  itemSize="20">

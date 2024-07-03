@@ -24,13 +24,15 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './Components/home/home.component';
+import { DetailsComponent } from './Components/details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoustumerComponent,
     PayComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

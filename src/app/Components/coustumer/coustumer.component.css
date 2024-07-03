@@ -116,16 +116,16 @@ cdk-virtual-scroll-viewport::-webkit-scrollbar {
 
   .search-container {
     display: flex;
-    gap: 16px;
-    margin: 16px;
+    gap: 16px; /* Espacio entre los elementos */
+    margin: 16px; /* Margen exterior del contenedor */
+  }
+  
+  .date-field {
+    flex: 1; /* Ocupa todo el espacio disponible */
   }
   
   .search-field {
-    flex: 1;
-  }
-  
-  .mat-form-field {
-    width: 100%;
+    flex: 1; /* Ocupa todo el espacio disponible */
   }
   
   .mat-form-field-fill .mat-form-field-wrapper {
