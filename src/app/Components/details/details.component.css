@@ -1,0 +1,91 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-section {
+  flex: 2;
+  margin-left: 30px;
+  border: none;
+  height: 70vh;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #834841;
+  text-align: center;
+  color: #ddd;
+  font-weight: bold;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.input-update {
+  border-radius: 8px;
+  border: none;
+  height: 20px;
+  width: 100%;
+}
+
+table ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cdk-virtual-scroll-viewport {
+  height: 200px;
+  overflow: auto;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.search-container {
+  display: flex;
+  gap: 16px;
+  margin: 16px;
+}
+
+.date-field,
+.search-field {
+  flex: 1;
+  display: flex; /* Asegura que los campos se muestren uno al lado del otro */
+  align-items: center; /* Centra los elementos verticalmente */
+}
+
+.date-field {
+  margin-right: 14px; /* Espacio entre el campo de fecha y los campos de búsqueda */
+}
+
+.search-field {
+  margin-right: 12px; /* Espacio entre los campos de búsqueda */
+}
