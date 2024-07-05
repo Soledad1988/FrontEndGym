@@ -1,63 +1,60 @@
 
 <div class="container">
-    <section class="table-section">
-      <div class="search-container">
-        <mat-form-field class="date-field">
-          <mat-label>Enter a date range</mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Start date">
-            <input matEndDate placeholder="End date">
-          </mat-date-range-input>
-          <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
-  
-        <mat-form-field class="search-field">
-          <mat-label>Name</mat-label>
-          <input matInput [(ngModel)]="searchName" (input)="onSearch()">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-  
-        <mat-form-field class="search-field">
-          <mat-label>Last Name</mat-label>
-          <input matInput [(ngModel)]="searchLastName" (input)="onSearch()">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-      </div>
-  
-      <cdk-virtual-scroll-viewport itemSize="20">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Last Name</th>
-              <th>DNI</th>
-              <th>Phone Number</th>
-              <th>Pagos</th>
-              <th>Fecha</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let customer of customers">
-              <td>{{ customer.name }}</td>
-              <td>{{ customer.lastName }}</td>
-              <td>{{ customer.dni }}</td>
-              <td>{{ customer.telefonNumber }}</td>
-              <td>
-                <ul>
-                  <li *ngFor="let fee of customer.fees">{{ fee.fee }}</li>
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  <li *ngFor="let fee of customer.fees">{{ fee.datePayment | date: 'dd/MM/yyyy' }}</li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </cdk-virtual-scroll-viewport>
-    </section>
-  </div>
-  
+  <section class="table-section">
+    <div class="search-container">
+      <mat-form-field class="date-field">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <mat-form-field class="search-field">
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="searchName" (input)="onSearch()">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="search-field">
+        <mat-label>Last Name</mat-label>
+        <input matInput [(ngModel)]="searchLastName" (input)="onSearch()">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+    <cdk-virtual-scroll-viewport itemSize="15">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>DNI</th>
+            <th>Phone Number</th>
+            <th>Pagos</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.lastName }}</td>
+            <td>{{ customer.dni }}</td>
+            <td>{{ customer.telefonNumber }}</td>
+            <td colspan="2">
+              <div class="fees-container">
+                <div *ngFor="let fee of customer.fees" class="fee-item">
+                  <span>{{ fee.fee }}</span>
+                  <span>{{ fee.datePayment | date: 'dd/MM/yyyy' }}</span>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </cdk-virtual-scroll-viewport>
+  </section>
+</div>

@@ -22,7 +22,7 @@ export class DetailsComponent implements OnInit{
   ngOnInit(): void {
     this.loadCustomersWithFees();
   }
-
+  
   getCustomers(): void {
     this.customerService.getCustomer().subscribe(
       (data: Customer[]) => {
