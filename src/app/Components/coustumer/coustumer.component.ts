@@ -17,6 +17,9 @@ export class CoustumerComponent implements OnInit{
 
   editCustomerId: number | null = null;
 
+  selectedCustomer: any;
+  currentDate: Date = new Date();
+
   constructor(
     private customerService: CustomerService,
     private toastr: ToastrService, 
@@ -101,6 +104,23 @@ export class CoustumerComponent implements OnInit{
     this.customerService.searchCustomers(this.searchName, this.searchLastName).subscribe(data => {
       this.customers = data;
     });
+  }
+
+  /*viewDetails(customer: any) {
+    this.selectedCustomer = customer;
+  }*/
+    viewDetails(customer: any) {
+      this.selectedCustomer = customer;
+  
+      // Calcular el estado de cada cuota
+      this.selectedCustomer.fees.forEach((fee: any) => {
+        const feeDate = new Date(fee.datePayment);
+        fee.isPending = feeDate < this.currentDate;
+      });
+    }
+
+  closeDetails() {
+    this.selectedCustomer = null;
   }
 
 
