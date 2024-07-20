@@ -25,7 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeComponent } from './Components/home/home.component';
 import { DetailsComponent } from './Components/details/details.component';
-
+import { RoutinComponent } from './Components/routin/routin.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +33,7 @@ import { DetailsComponent } from './Components/details/details.component';
     PayComponent,
     HomeComponent,
     DetailsComponent,
+    RoutinComponent,
   ],
   imports: [
     BrowserModule,
