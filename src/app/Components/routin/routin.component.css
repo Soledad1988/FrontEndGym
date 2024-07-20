@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.category {
+    background: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.category-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.routine-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+.routine {
+    flex: 0 0 auto;
+    width: 300px;
+    margin-right: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    scroll-snap-align: start;
+}
+.routine-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.routine-details {
+    font-size: 14px;
+    color: #666;
+}
+.scroll-button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.scroll-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+.carousel-wrapper {
+    position: relative;
+}
+.scroll-button-left {
+    position: absolute;
+    top: 50%;
+    left: -50px;
+    transform: translateY(-50%);
+}
+.scroll-button-right {
+    position: absolute;
+    top: 50%;
+    right: -50px;
+    transform: translateY(-50%);
+}
