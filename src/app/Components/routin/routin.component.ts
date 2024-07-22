@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/Category';
+import { CategoryService } from '../../service/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-routin',
@@ -7,6 +9,9 @@ import { Category } from '../../models/Category';
   styleUrl: './routin.component.css'
 })
 export class RoutinComponent implements OnInit{
+
+  category: Category = new Category();
+  categories2: Category[] = [];
 
   categories: Category[] = [
     {
@@ -29,9 +34,25 @@ export class RoutinComponent implements OnInit{
     // Add more categories as needed
   ];
 
-  constructor() { }
+  constructor( private categoryService: CategoryService,
+    private toastr: ToastrService, 
+  ) { }
 
   ngOnInit(): void { }
+
+  createCategory() {
+    this.categoryService.createCategory(this.category).subscribe(
+      res => {
+        console.log(res);
+        this.toastr.success('El cliente se ha creado correctamente', 'Éxito');
+      },
+      (err) => {
+        console.error('Error al crear cliente:', err);
+        this.toastr.error('Error al crear el cliente', 'Error');
+     
+      }
+    );
+  }
 
   scrollCarousel(categoryId: number | undefined, direction: string): void {
     if (categoryId !== undefined) {

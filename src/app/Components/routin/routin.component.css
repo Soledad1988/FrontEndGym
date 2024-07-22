@@ -8,6 +8,33 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.form-category {
+    width: 20%;
+    background: #c1938b;
+    padding: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .full-width {
+      width: 100%;
+      height: 6%;
+    
+  }
+    
+  .button {
+      display: flex;
+      justify-content: center;
+  }
+    
+  .button button {
+      width: 100%;
+      border-radius: 8px;
+      background-color: #834841;
+  }
+
 .category {
     background: #fff;
     margin-bottom: 20px;

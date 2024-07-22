@@ -1,4 +1,19 @@
 <div class="container">
+  <section class="form-category">
+    <form (ngSubmit)="createCategory()">
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <input matInput placeholder="Name" [(ngModel)]="category.type" name="name" required>
+        </mat-form-field>
+    </p>  
+      <div class="button full-width">
+        <button mat-raised-button type="submit">Add</button>
+      </div>
+    </form>
+  </section>
+  <section>
     <div *ngFor="let category of categories" class="category">
       <div class="category-title">{{ category.type }}</div>
       <div class="carousel-wrapper">
@@ -17,5 +32,6 @@
         <button class="scroll-button scroll-button-right" (click)="scrollCarousel(category.idCategory!, 'right')">▶</button>
       </div>
     </div>
+  </section>
   </div>
   
