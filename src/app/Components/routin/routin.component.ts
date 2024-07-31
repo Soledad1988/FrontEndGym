@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from '../../models/Category';
 import { CategoryService } from '../../service/category.service';
 import { ToastrService } from 'ngx-toastr';
+import { Routine } from '../../models/Routine';
+import { RoutinService } from '../../service/routin.service';
 
 @Component({
   selector: 'app-routin',
@@ -11,45 +13,72 @@ import { ToastrService } from 'ngx-toastr';
 export class RoutinComponent implements OnInit{
 
   category: Category = new Category();
-  categories2: Category[] = [];
+  categories: Category[] = [];
 
-  categories: Category[] = [
-    {
-      idCategory: 1,
-      type: 'Cardio',
-      routine: [
-        { idRoutine: 1, description: 'Morning Run', dayOfWeek: 'Monday', exerciseType: 'Cardio', duration: 30, intensityLevel: 3 },
-        { idRoutine: 2, description: 'Evening Swim', dayOfWeek: 'Wednesday', exerciseType: 'Cardio', duration: 45, intensityLevel: 4 },
-        // Add more routines as needed
-      ]
-    },
-    {
-      idCategory: 2,
-      type: 'Strength Training',
-      routine: [
-        { idRoutine: 3, description: 'Weight Lifting', dayOfWeek: 'Tuesday', exerciseType: 'Strength Training', duration: 60, intensityLevel: 5 },
-        // Add more routines as needed
-      ]
-    }
-    // Add more categories as needed
-  ];
+  routin: Routine = new Routine();
+  routines: Routine[] = [];
 
   constructor( private categoryService: CategoryService,
+    private routinService: RoutinService,
     private toastr: ToastrService, 
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getCategory();
+   }
 
   createCategory() {
     this.categoryService.createCategory(this.category).subscribe(
       res => {
         console.log(res);
         this.toastr.success('El cliente se ha creado correctamente', 'Éxito');
+        this.getCategory(); // Refresh categories after adding a new one
       },
       (err) => {
         console.error('Error al crear cliente:', err);
         this.toastr.error('Error al crear el cliente', 'Error');
      
+      }
+    );
+  }
+
+  getCategory(): void {
+    this.categoryService.getCategory().subscribe(
+      (data: Category[]) => {
+        this.categories = data;
+      },
+      (error) => {
+        console.error('Error al obtener las categorias:', error);
+      }
+    );
+  }
+
+
+  createRutine() {
+    if (this.routin.categoryId) {
+      this.routinService.assignCategoryToRoutine(this.routin.categoryId, this.routin).subscribe(
+        res => {
+          console.log(res);
+          this.toastr.success('La rutina se ha creado y asignado a la categoría', 'Éxito');
+        },
+        err => {
+          console.error('Error al crear la rutina:', err);
+          this.toastr.error('Error al crear la rutina', 'Error');
+        }
+      );
+    } else {
+      console.error('Error: No se ha seleccionado una categoría para la rutina');
+      this.toastr.error('Error: No se ha seleccionado una categoría para la rutina', 'Error');
+    }
+  }
+
+  getRoutine(): void {
+    this.routinService.getRoutine().subscribe(
+      (data: Routine[]) => {
+        this.routines = data;
+      },
+      error => {
+        console.error('Error al obtener las rutinas:', error);
       }
     );
   }
