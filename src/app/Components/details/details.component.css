@@ -1,0 +1,148 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-section {
+
+  width: 100%;
+  max-width: 1500px;
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+th {
+  background-color: #834841;
+  text-align: center;
+  color: #ddd;
+  font-weight: bold;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+cdk-virtual-scroll-viewport {
+  height: 500px;
+  overflow: auto; /* Asegura que el contenido se pueda desplazar */
+}
+
+/* Estilizar la barra de desplazamiento */
+cdk-virtual-scroll-viewport::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra de desplazamiento vertical */
+  height: 8px; /* Altura de la barra de desplazamiento horizontal */
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color de fondo del track (canal) */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
+  background: #888; /* Color de la manija (thumb) */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color de la manija (thumb) al pasar el ratón */
+}
+
+.search-container {
+  display: flex;
+  gap: 16px;
+  margin: 16px;
+}
+
+.date-field,
+.search-field {
+  flex: 1;
+  display: flex;  /*Asegura que los campos se muestren uno al lado del otro */
+  align-items: center; /* Centra los elementos verticalmente */
+}
+
+.date-field {
+  margin-right: 14px; /* Espacio entre el campo de fecha y los campos de búsqueda */
+}
+
+.search-field {
+  margin-right: 12px; /* Espacio entre los campos de búsqueda */
+}
+/*
+
+.cdk-virtual-scroll-viewport {
+  height: 500px;
+  overflow: auto;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+*/
+
+
+
+.cdk-virtual-scroll-viewport {
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.cdk-virtual-scroll-viewport table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cdk-virtual-scroll-viewport th,
+.cdk-virtual-scroll-viewport td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.cdk-virtual-scroll-viewport th {
+  background-color: #834841;
+}
+
+.fees-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.fee-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+}
+
+.fee-item span:first-child {
+  font-weight: bold;
+}
+
+.fee-item span:last-child {
+  font-style: italic;
+  color: #666;
+}

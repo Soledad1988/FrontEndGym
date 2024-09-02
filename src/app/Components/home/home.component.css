@@ -1,0 +1,47 @@
+.container { 
+  display: flex;
+  justify-content: space-between;
+  height: 80vh; /* Altura ajustada para contener el 80% de la vista */
+}
+
+.menu-section {
+  width: 20%;
+  background: #3f3e3e;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Añade un espacio entre los botones */
+}
+
+.menu-section a {
+  display: block;
+  text-decoration: none;
+}
+
+.menu-section a button {
+  width: 100%; /* Asegura que el botón ocupe todo el ancho del contenedor padre */
+}
+
+.imag-section {
+  flex: 1; /* Deja que el contenedor de la imagen ocupe el espacio restante */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f3e3e; /* Color de fondo para ver el área del contenedor */
+}
+
+.image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imag {
+  width: 100%;
+  height: 100%; /* Ajusta la imagen para ocupar todo el espacio disponible */
+  object-fit: contain; /* Mantiene la proporción de la imagen dentro del contenedor */
+}
+

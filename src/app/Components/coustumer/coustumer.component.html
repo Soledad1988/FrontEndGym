@@ -74,9 +74,13 @@
           <input matInput [(ngModel)]="searchLastName" (input)="onSearch()">
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
+
+        <div class="button">
+          <button mat-raised-button type="submit" [routerLink]="['/details']">Payment Details</button>
+        </div>
        
       </div>
-      <cdk-virtual-scroll-viewport  itemSize="20">
+      <cdk-virtual-scroll-viewport  itemSize="15">
       <table>
         <thead>
           <tr>
@@ -86,6 +90,7 @@
             <th>Phone Number</th>
             <th>Address</th>
             <th>Actions</th>
+            <th>Details</th>
           </tr>
         </thead>
         <tbody>
@@ -131,11 +136,47 @@
 
                 
               </td>
+
+              <td>
+                <button mat-raised-button (click)="viewDetails(customer)">View Details</button>
+              </td>
             </ng-template>
           </tr>
         </tbody>
       </table>
-    </cdk-virtual-scroll-viewport>
+      </cdk-virtual-scroll-viewport>
     </section>
+
+    <div  class="modal-overlay" *ngIf="selectedCustomer">
+      <section class="details-section">
+        <h2>Customer Details</h2>
+        <p><strong>Name:</strong> {{ selectedCustomer.name }}</p>
+        <p><strong>Last Name:</strong> {{ selectedCustomer.lastName }}</p>
+        <p><strong>DNI:</strong> {{ selectedCustomer.dni }}</p>
+        <p><strong>Phone Number:</strong> {{ selectedCustomer.telefonNumber }}</p>
+        <p><strong>Address:</strong> {{ selectedCustomer.address }}</p>
+        <h3>Payments</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Payment</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fee of selectedCustomer.fees">
+              <td>{{ fee.fee }}</td>
+              <td>{{ fee.datePayment | date: 'dd/MM/yyyy' }}</td>
+              <td>
+                <span [ngClass]="fee.isPending ? 'pending' : 'up-to-date'">
+                  {{ fee.isPending ? 'Pending' : 'Up to date' }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button mat-raised-button (click)="closeDetails()">Close</button>
+      </section>
+  </div>
 
 </div>

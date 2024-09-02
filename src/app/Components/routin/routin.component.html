@@ -1,0 +1,65 @@
+  
+  <div class="main-container">
+    <aside class="sidebar">
+      <section class="form-category">
+        <form (ngSubmit)="createCategory()">
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <input matInput placeholder="Name" [(ngModel)]="category.type" name="type" required>
+          </mat-form-field>
+          <div class="button full-width" style="row-gap: 1px; margin-bottom: 16px;">
+            <button mat-raised-button type="submit">Add</button>
+          </div>
+        </form>
+        <form (ngSubmit)="createRutine()">
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select [(ngModel)]="routin.categoryId" name="categoryId" required>
+              <mat-option *ngFor="let category of categories" [value]="category.idCategory">{{ category.type }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Day of Week</mat-label>
+            <input matInput placeholder="Day of Week" [(ngModel)]="routin.dayOfWeek" name="dayOfWeek" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Exercise Type</mat-label>
+            <input matInput placeholder="Exercise Type" [(ngModel)]="routin.exerciseType" name="exerciseType" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Duration</mat-label>
+            <input matInput placeholder="Duration" [(ngModel)]="routin.duration" name="duration" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Intensity Level</mat-label>
+            <input matInput placeholder="Intensity Level" [(ngModel)]="routin.intensityLevel" name="intensityLevel" required>
+          </mat-form-field>
+          <div class="button full-width">
+            <button mat-raised-button type="submit">Add</button>
+          </div>
+        </form>
+      </section>
+    </aside>
+    <main class="content">
+      <section>
+        <div *ngFor="let category of categories" class="category">
+          <div class="category-title">{{ category.type }}</div>
+          <div class="carousel-wrapper">
+            <button class="scroll-button scroll-button-left" (click)="scrollCarousel(category.idCategory!, 'left')">◀</button>
+            <div class="routine-carousel" [id]="'routine-carousel-' + category.idCategory">
+              <div *ngFor="let routine of category.routine" class="routine">
+                <div class="routine-details">
+                  <p>Day of Week: {{ routine.dayOfWeek }}</p>
+                  <p>Exercise Type: {{ routine.exerciseType }}</p>
+                  <p>Duration: {{ routine.duration }} minutes</p>
+                  <p>Intensity Level: {{ routine.intensityLevel }}</p>
+                </div>
+              </div>
+            </div>
+            <button class="scroll-button scroll-button-right" (click)="scrollCarousel(category.idCategory!, 'right')">▶</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
