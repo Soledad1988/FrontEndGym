@@ -1,5 +1,5 @@
 .body{
-    background-color:#ffdfd5;
+    background-color:#cdc7c7;
 
 }
 
@@ -9,7 +9,7 @@
 }
 
 .navbar{
-    background-color: #834841;
+    background-color: #211f1f;
     display: flex;
     justify-content: flex-end;
     padding: 1.5em;
@@ -44,7 +44,7 @@
 
 footer {
     position: relative;
-    background-color: #834841;
+    background-color: #211f1f;
     width: 100%;
     padding: 15px;
     box-sizing: border-box;

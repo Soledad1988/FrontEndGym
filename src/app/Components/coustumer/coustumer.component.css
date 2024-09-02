@@ -13,7 +13,7 @@
 
 .form-section {
   width: 20%;
-  background: #c1938b;
+  background: #8e8d8d;
   padding: 20px;
   box-sizing: border-box;
   justify-content: center;
@@ -35,7 +35,8 @@
 .button button {
     width: 100%;
     border-radius: 8px;
-    background-color: #834841;
+    background-color: #583cc8;
+    color: #ddd;
 }
 
 .table-section {
@@ -55,7 +56,7 @@ th, td {
 }
 
 th {
-    background-color: #834841;
+    background-color: #583cc8;
     text-align: center;
     color: #ddd;
     font-weight: bold;

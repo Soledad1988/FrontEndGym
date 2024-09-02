@@ -5,7 +5,7 @@
 
 .sidebar {
   width: 250px; /* Ajusta según sea necesario */
-  background-color: #c1938b; /* Color de fondo para diferenciar la barra lateral */
+  background: #8e8d8d;/* Color de fondo para diferenciar la barra lateral */
   padding: 20px;
 }
 
@@ -17,7 +17,8 @@
 .button button {
   width: 100%;
   border-radius: 8px;
-  background-color: #834841;
+  background-color: #583cc8;
+  color: #ddd;
 }
 
 .content {
